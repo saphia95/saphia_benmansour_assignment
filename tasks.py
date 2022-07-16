@@ -1,0 +1,61 @@
+import requests
+
+# task 1
+URL = "http://127.0.0.1:5000/page/"
+body = {"name": "OurMedia France"}
+result = requests.post(url=URL, json=body)
+
+print("Task 1")
+print("OurMedia France page has been created")
+print(f"API response : \n {result.text}")
+
+
+# task 2
+URL = "http://127.0.0.1:5000/video/"
+our_media_page_id = result.json()['id']
+
+print("Task 2")
+body_video_a = {"title": "video A", "page_id": our_media_page_id}
+result_a = requests.post(url=URL, json=body_video_a)
+print("Video A has been created")
+print(f"API response : \n {result_a.text}")
+
+body_video_b = {"title": "video B", "page_id": our_media_page_id}
+result_b = requests.post(url=URL, json=body_video_b)
+print("Video B has been created")
+print(f"API response : \n {result_b.text}")
+
+
+# task 3
+URL = "http://127.0.0.1:5000/videos_insights/"
+video_id_a = result_a.json()['id']
+video_id_b = result_b.json()['id']
+
+body_video_insight = {
+        "videos_insights": [
+            {
+                "video_id": video_id_a,
+                "likes": 10,
+                "views": 20
+            },
+            {
+                "video_id": video_id_b,
+                "likes": 30,
+                "views": 600
+            }
+        ]
+    }
+result = requests.post(url=URL, json=body_video_insight)
+
+print("Task 3")
+print("Video insights have been created")
+print(f"API response : \n {result.text}")
+
+
+# task 4
+URL = f"http://127.0.0.1:5000/video/{video_id_b}"
+result = requests.delete(url=URL)
+
+print("Task 4")
+print("Video B has been deleted")
+print(f"API response : \n {result.text}")
