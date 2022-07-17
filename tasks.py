@@ -1,7 +1,9 @@
 import requests
 
+base_url = "http://127.0.0.1:5000/"
+
 # task 1
-URL = "http://127.0.0.1:5000/page/"
+URL = f"{base_url}page/"
 body = {"name": "OurMedia France"}
 result = requests.post(url=URL, json=body)
 
@@ -11,7 +13,7 @@ print(f"API response : \n {result.text}")
 
 
 # task 2
-URL = "http://127.0.0.1:5000/video/"
+URL = f"{base_url}video/"
 our_media_page_id = result.json()['id']
 
 print("Task 2")
@@ -27,7 +29,7 @@ print(f"API response : \n {result_b.text}")
 
 
 # task 3
-URL = "http://127.0.0.1:5000/videos_insights/"
+URL = f"{base_url}videos_insights/"
 video_id_a = result_a.json()['id']
 video_id_b = result_b.json()['id']
 
@@ -53,7 +55,7 @@ print(f"API response : \n {result.text}")
 
 
 # task 4
-URL = f"http://127.0.0.1:5000/video/{video_id_b}"
+URL = f"{base_url}video/{video_id_b}"
 result = requests.delete(url=URL)
 
 print("Task 4")

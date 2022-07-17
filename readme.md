@@ -36,7 +36,16 @@ It would be better if i had added GET, POST and DELETE methods for each models.
 
 
 ## Task 5
+For each table of the OLTP database, we should add an updated_at column to be able to track row changes.
+Then, we create python functions in Google Cloud Functions that are scheduled with Cloud Scheduler each night. 
+Functions :
+- are retrieving rows from the day before based on updated_at column,
+- put those rows in a csv (one csv per table),
+- load csv files in Google Cloud Storage
+- and make Big Query loading files in tables.
+
+
+
+![img.png](img.png)
 
 Saphia Benmansour
-
-![img_1.png](img_1.png)
