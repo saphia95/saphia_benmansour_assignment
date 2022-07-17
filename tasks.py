@@ -50,7 +50,7 @@ body_video_insight = {
 result = requests.post(url=URL, json=body_video_insight)
 
 print("Task 3")
-print("Video insights have been created")
+print("Videos insights have been created")
 print(f"API response : \n {result.text}")
 
 

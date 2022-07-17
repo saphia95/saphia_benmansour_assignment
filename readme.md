@@ -46,6 +46,6 @@ Functions :
 
 
 
-![img.png](img.png)
+![img.png](images/task_5_schema.png)
 
 Saphia Benmansour
